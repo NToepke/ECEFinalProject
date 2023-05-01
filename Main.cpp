@@ -1,4 +1,3 @@
-#include <Vector.h>
 #include "Player.h"
 #include "Npc.h"
 #include "Furniture.h"
@@ -17,9 +16,13 @@ int main()
 
 int runMenu(Player* player)
 {
-
-    for(int i = 1; i < player->getOptions().size; i++)
+    vector<interactObject>* currentOptions = player->getOptions();
+    map<std::string,int>* progressionMap = player->getMap();
+    for(int i = 1; i <= currentOptions.size(); i++)
     {
-        std::cout << i <<". "<<player << std::endl;
+        int currentProgression = progressionMap[currentOptions[i-1]->name];
+        std::string printDesc = currentOptions[i-1].descriptions[currentProgression];
+
+        std::cout << i <<". "<< printDesc << std::endl;
     }
 }
