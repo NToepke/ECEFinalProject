@@ -7,6 +7,7 @@
 class Npc : public InteractObject{
     public:
         std::string name;
+        std::string description;
         Quest::Quest giveQuest();
 
 };
