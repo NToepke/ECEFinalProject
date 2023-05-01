@@ -14,7 +14,7 @@ static vector<InteractObject>* Player::getOptions()
     return currentInteractions;
 }
 
-static map<std::string interactName,int progressionKey>* Player::getMap()
+static map<std::string,int>* Player::getMap()
 {
     return progressionMap;
 }

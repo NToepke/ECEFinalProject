@@ -17,7 +17,7 @@ class Player {
     public:
         static Player* getInstance();
         static vector<InteractObject>* getOptions();
-        static vector<InteractObject>* getMap();
+        static map<std::string,int>* getMap();
 };
 
 
