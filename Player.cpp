@@ -8,3 +8,8 @@ Player* Player::getInstance(){
     }
     return instance;
 }
+
+static Vector<Quest>* Player::getQuests()
+{
+    return quests;
+}
