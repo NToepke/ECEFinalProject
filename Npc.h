@@ -1,6 +1,5 @@
 #ifndef NPC_H
 #define NPC_H
-#include <string>
 #include "InteractObject.h"
 
 /*
@@ -15,7 +14,7 @@
 class Npc : public InteractObject{
     public:
         std::string name;
-        std::string description;
+        std::vector<std::string> descriptions;
 
 };
 

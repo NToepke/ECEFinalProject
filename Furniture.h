@@ -1,6 +1,5 @@
 #ifndef FURNITURE_H
 #define FURNITURE_H
-#include <string>
 #include "InteractObject.h"
 
 /*
@@ -16,7 +15,7 @@
 class Furniture : public InteractObject{
     public:
         std::string name;
-        std::string description;
+        std::vector<std::string> descriptions;
         std::vector<Furniture> contents;
 
 };

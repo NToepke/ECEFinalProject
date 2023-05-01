@@ -1,8 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <map.h>
-#include <vector.h>
-#include <string.h>
+#include <map>
+#include <vector>
+#include <string>
 #include "InteractObject.h"
 
 
