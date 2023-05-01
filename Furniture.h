@@ -2,13 +2,22 @@
 #define FURNITURE_H
 #include <string>
 #include "InteractObject.h"
-#include "Quest.h"
+
+/*
+    The main difference between NPC and Furniture is the NPC's will be
+    present throughout the entire run of the game, while furniture will
+    be added and removed per each "room".
+    Codewise, Furniture can be containers, they can contain more Furniture objects
+    to allow for things like a bookshelf with books, or a table with candles, allowing 
+    some nested behaviour that isn't necessary on the NPC's.
+*/
+
 
 class Furniture : public InteractObject{
     public:
         std::string name;
         std::string description;
-        Quest::Quest giveQuest();
+        std::vector<Furniture> contents;
 
 };
 

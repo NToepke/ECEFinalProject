@@ -6,7 +6,6 @@ class InteractObject {
     public:
         virtual std::string name;
         virtual std::string description;
-        virtual Quest giveQuest() = 0;
 };
 
 #endif
