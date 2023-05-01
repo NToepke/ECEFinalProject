@@ -9,7 +9,12 @@ Player* Player::getInstance(){
     return instance;
 }
 
-static Vector<Quest>* Player::getQuests()
+static vector<InteractObject>* Player::getOptions()
 {
-    return quests;
+    return currentInteractions;
+}
+
+static map<std::string interactName,int progressionKey>* Player::getMap()
+{
+    return progressionMap;
 }
