@@ -1,13 +1,15 @@
+#include <iostream>
 #include "Player.h"
 #include "Npc.h"
 #include "Furniture.h"
+#include "InteractObject.h"
 
 /*
 */
 
 int main()
 {
-    Player* player = Player.getInstance(); //Create the player
+    Player* player = Player::getInstance(); //Create the player
     //Intro
     //RunMenu loop
     std::string chosenInteraction = "";
@@ -24,29 +26,29 @@ int main()
 std::string runMenu(Player* player)
 {
     //pull player variables into local scope for easier code readability
-    vector<interactObject>* currentOptions = player->getOptions();
-    map<std::string,int>* progressionMap = player->getInteractionMap();
+    std::vector<InteractObject>* currentOptions = player->getOptions();
+    std::map<std::string,int>* progressionMap = player->getInteractionMap();
     //variable to hold user selection
     int userInput = -1;
-    for(int i = 1; i <= currentOptions.size(); i++)
+    for(int i = 1; i <= currentOptions->size(); i++)
     {
         //get the string from each InteractObject to print for user selection
         //print the name for user to see.
-        std::cout << i <<". "<< currentOptions[i-1]->name << std::endl;
-
+        std::cout << i <<". " << currentOptions->at(i-1).name << std::endl;
     }
     std::cin >> userInput;
 
-    int currentProgression = progressionMap[currentOptions[i-1]->name];
-    std::string printDesc = currentOptions[i-1].descriptions[currentProgression][0];
+    int currentProgression = progressionMap->at(currentOptions->at(userInput-1).name);
+    std::string printDesc = currentOptions->at(userInput-1).descriptions[currentProgression];
+    //descriptions[currentProgression];
     //Run story portion of current interaction
 
-    int checkFail = player->incrementInteractionMap(currentOptions[userInput-1]->name);
+    int checkFail = player->incrementInteractionMap();
     if(checkFail == -1)
     {
         std::cerr << "Increment failed, look above for error from method." << std::endl;
         //game is broken, exit out
         return "-1";
     }
-
+    return "";
 }
