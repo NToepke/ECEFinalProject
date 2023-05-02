@@ -11,24 +11,35 @@ Player* Player::getInstance(){
     return instance;
 }
 
-std::vector<InteractObject>* Player::getOptions()
+void Player::addInteraction(InteractObject* toAdd)
+{
+    currentInteractions.push_back(toAdd);
+    mapInteraction(toAdd);
+}
+
+void Player::mapInteraction(InteractObject* toAdd)
+{
+    interactionMap.insert({toAdd->name,0});
+}
+
+std::vector<InteractObject*>* Player::getInteractions()
 {
     return &currentInteractions;
 }
 
 std::map<std::string,int>* Player::getInteractionMap()
 {
-    return &progressionMap;
+    return &interactionMap;
 }
 
 int Player::incrementInteractionMap(std::string interactName)
 {
     try {
-        progressionMap.at(interactName)++;
+        interactionMap.at(interactName)++;
     }
     catch (const std::out_of_range& e){
         std::cerr << "Error: " << e.what() << std::endl;
         return -1;
     }
-    return progressionMap.at(interactName);
+    return interactionMap.at(interactName);
 }
