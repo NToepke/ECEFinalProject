@@ -10,7 +10,6 @@
     pieces, but do not contain more InteractObjects.
 */
 
-
 class Npc : public InteractObject{
     public:
         std::string name;
@@ -18,7 +17,7 @@ class Npc : public InteractObject{
 
         Npc();
         Npc(std::string name);
-
+        void setDescriptions(std::vector<std::string> descriptions);
         std::string giveDescription(int currentProgression);
 };
 

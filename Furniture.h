@@ -19,7 +19,7 @@ class Furniture : public InteractObject{
 
         Furniture();
         Furniture(std::string name);
-
+        void setDescriptions(std::vector<std::string> descriptions);
         std::string giveDescription(int currentProgression);
 
 

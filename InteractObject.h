@@ -7,6 +7,7 @@ class InteractObject {
     public:
         std::string name;
         std::vector<std::string> descriptions;
+        virtual void setDescriptions(std::vector<std::string> descriptions) = 0;
         virtual std::string giveDescription(int currentProgression) = 0;
 };
 
