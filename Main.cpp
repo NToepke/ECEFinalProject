@@ -14,6 +14,7 @@ std::string runMenu(Player* player)
     int userInput = -1;
     for(unsigned i = 1; i <= currentOptions->size(); i++)
     {
+        std::cout << currentOptions->at(0)->name;
         //get the string from each InteractObject to print for user selection
         //print the name for user to see.
         std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
@@ -36,6 +37,9 @@ std::string runMenu(Player* player)
 void basicStory(Player* player, InteractObjectFactory factory)
 {
     std::vector<InteractObject*> newStory;
+
+    Furniture* newFurniture = (Furniture*)factory.getInteractObject("Furniture","Yes",{"yes"});
+    std::cout << newFurniture->name << " FLag";
     newStory.push_back(factory.getInteractObject("Furniture","Bookshelf",{"Its a bookshelf covered in books.","Story 2","Story 3"}));
     newStory.push_back(factory.getInteractObject("Npc","Jeff",{"Hi!","Story 2","Story 3"}));
     newStory.push_back(factory.getInteractObject("Furniture","Desk",{"It's a small desk with no drawers.","Story 2","Story 3"}));
@@ -51,6 +55,9 @@ int main()
     InteractObjectFactory factory;
     //Intro
     basicStory(player,factory);
+
+    std::cout << "Flag" << player->getInteractions()->at(0)->name;
+
     //RunMenu loop
     std::string chosenInteraction = "";
     do
