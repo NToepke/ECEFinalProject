@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include <iostream>
 #include "Player.h"
 
 Player* Player::instance = NULL;
@@ -9,17 +11,17 @@ Player* Player::getInstance(){
     return instance;
 }
 
-static vector<InteractObject>* Player::getOptions()
+std::vector<InteractObject>* Player::getOptions()
 {
-    return currentInteractions;
+    return &currentInteractions;
 }
 
-static map<std::string,int>* Player::getInteractionMap()
+std::map<std::string,int>* Player::getInteractionMap()
 {
-    return progressionMap;
+    return &progressionMap;
 }
 
-static int Player::incrementInteractionMap(std::string interactName)
+int Player::incrementInteractionMap(std::string interactName)
 {
     try {
         progressionMap.at(interactName)++;
