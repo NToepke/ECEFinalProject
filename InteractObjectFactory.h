@@ -5,5 +5,5 @@
 class InteractObjectFactory {
     public:
         static InteractObject* getInteractObject(std::string objectType, std::string name);
-}
+};
 #endif

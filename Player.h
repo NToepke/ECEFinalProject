@@ -20,8 +20,8 @@ class Player {
 
     public:
         static Player* getInstance();
-        static vector<InteractObject>* getOptions();
-        static map<std::string,int>* getInteractionMap();
+        static std::vector<InteractObject>* getOptions();
+        static std::map<std::string,int>* getInteractionMap();
         static int incrementInteractionMap(std::string interactName);
 };
 

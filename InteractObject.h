@@ -5,9 +5,9 @@
 
 class InteractObject {
     public:
-        virtual std::string name;
-        virtual std::vector<std::string> descriptions;
-        virtual std::string giveDescription(int currentProgression);
+        std::string name;
+        std::vector<std::string> descriptions;
+        virtual std::string giveDescription(int currentProgression) = 0;
 };
 
 #endif
