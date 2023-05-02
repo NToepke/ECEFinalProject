@@ -12,13 +12,19 @@ std::string runMenu(Player* player)
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
     //variable to hold user selection
     int userInput = -1;
-    for(unsigned i = 1; i <= currentOptions->size(); i++)
-    {
-        std::cout << currentOptions->at(0)->name;
+    //for(unsigned i = 1; i <= currentOptions->size(); i++)
+    //{
+        //std::cout << currentOptions->at(0)->name;
         //get the string from each InteractObject to print for user selection
         //print the name for user to see.
-        std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
-    }
+        //std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
+    //}
+
+    std::cout << 1 <<". " << ((Furniture*)(currentOptions)->at(0))->name << std::endl;
+    std::cout << 2 <<". " << ((Npc*)(currentOptions)->at(1))->name << std::endl;
+    std::cout << 3 <<". " << ((Furniture*)(currentOptions)->at(2))->name << std::endl;
+
+
     std::cin >> userInput;
 
     int currentProgression = progressionMap->at(currentOptions->at(userInput-1)->name);
@@ -38,8 +44,6 @@ void basicStory(Player* player, InteractObjectFactory factory)
 {
     std::vector<InteractObject*> newStory;
 
-    Furniture* newFurniture = (Furniture*)factory.getInteractObject("Furniture","Yes",{"yes"});
-    std::cout << newFurniture->name << " FLag";
     newStory.push_back(factory.getInteractObject("Furniture","Bookshelf",{"Its a bookshelf covered in books.","Story 2","Story 3"}));
     newStory.push_back(factory.getInteractObject("Npc","Jeff",{"Hi!","Story 2","Story 3"}));
     newStory.push_back(factory.getInteractObject("Furniture","Desk",{"It's a small desk with no drawers.","Story 2","Story 3"}));
