@@ -4,6 +4,6 @@
 
 class InteractObjectFactory {
     public:
-        static InteractObject* getInteractObject(enum objectType);
+        static InteractObject* getInteractObject(std::string objectType, std::string name);
 }
 #endif
