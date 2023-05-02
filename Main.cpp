@@ -43,7 +43,7 @@ std::string runMenu(Player* player)
     //descriptions[currentProgression];
     //Run story portion of current interaction
 
-    int checkFail = player->incrementInteractionMap();
+    int checkFail = player->incrementInteractionMap(currentOptions->at(userInput-1).name);
     if(checkFail == -1)
     {
         std::cerr << "Increment failed, look above for error from method." << std::endl;
