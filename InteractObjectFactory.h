@@ -4,6 +4,6 @@
 
 class InteractObjectFactory {
     public:
-        static InteractObject* getInteractObject(std::string objectType, std::string name);
+        static InteractObject* getInteractObject(std::string objectType, std::string name, std::vector<std::string> descriptions);
 };
 #endif

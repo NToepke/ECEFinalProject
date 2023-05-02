@@ -36,13 +36,9 @@ std::string runMenu(Player* player)
 void basicStory(Player* player, InteractObjectFactory factory)
 {
     std::vector<InteractObject*> newStory;
-    newStory.push_back(factory.getInteractObject("Furniture","Bookshelf"));
-    newStory.push_back(factory.getInteractObject("Npc","Jeff"));
-    newStory.push_back(factory.getInteractObject("Furniture","Desk"));
-
-    newStory.at(0)->setDescriptions({"Its a bookshelf covered in books.","Story 2","Story 3"});
-    newStory.at(1)->setDescriptions({"Hi!","Story 2","Story 3"});
-    newStory.at(2)->setDescriptions({"It's a small desk with no drawers.","Story 2","Story 3"});
+    newStory.push_back(factory.getInteractObject("Furniture","Bookshelf",{"Its a bookshelf covered in books.","Story 2","Story 3"}));
+    newStory.push_back(factory.getInteractObject("Npc","Jeff",{"Hi!","Story 2","Story 3"}));
+    newStory.push_back(factory.getInteractObject("Furniture","Desk",{"It's a small desk with no drawers.","Story 2","Story 3"}));
 
     player->addInteraction(newStory[0]);
     player->addInteraction(newStory[1]);
@@ -59,8 +55,8 @@ int main()
     std::string chosenInteraction = "";
     do
     {
-        chosenInteraction = runMenu(player);
         std::cout << chosenInteraction <<std::endl;
+        chosenInteraction = runMenu(player);
     }
     while(chosenInteraction.compare("-1") != 0);
     //exit menu loop when game tells you to.

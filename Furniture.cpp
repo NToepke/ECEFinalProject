@@ -10,6 +10,12 @@ Furniture::Furniture(std::string name)
     this->name = name;
 }
 
+Furniture::Furniture(std::string name, std::vector<std::string> descriptions)
+{
+    this->name = name;
+    this->descriptions = descriptions;
+}
+
 void Furniture::setDescriptions(std::vector<std::string> descriptions)
 {
     this->descriptions = descriptions;
