@@ -15,6 +15,7 @@ InteractObject* InteractObjectFactory::getInteractObject(std::string objectType,
     else
     {
         //Error
+        //std::cout << "ERROR" << std::endl;
         return nullptr;
     }
 }
