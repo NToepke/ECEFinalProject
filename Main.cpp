@@ -31,14 +31,14 @@ std::string runMenu(Player* player)
     for(int i = 1; i <= currentOptions.size(); i++)
     {
         //get the string from each InteractObject to print for user selection
-        int currentProgression = progressionMap[currentOptions[i-1]->name];
-        std::string printDesc = currentOptions[i-1].descriptions[currentProgression];
-        //print that string for user to see.
-        std::cout << i <<". "<< printDesc << std::endl;
+        //print the name for user to see.
+        std::cout << i <<". "<< currentOptions[i-1]->name << std::endl;
 
     }
     std::cin >> userInput;
 
+    int currentProgression = progressionMap[currentOptions[i-1]->name];
+    std::string printDesc = currentOptions[i-1].descriptions[currentProgression][0];
     //Run story portion of current interaction
 
     int checkFail = player->incrementInteractionMap(currentOptions[userInput-1]->name);
