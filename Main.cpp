@@ -59,9 +59,6 @@ int main()
     InteractObjectFactory factory;
     //Intro
     basicStory(player,factory);
-
-    std::cout << "Flag" << player->getInteractions()->at(0)->name;
-
     //RunMenu loop
     std::string chosenInteraction = "";
     do
