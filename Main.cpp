@@ -20,9 +20,9 @@ std::string runMenu(Player* player)
         //std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
     //}
 
-    std::cout << 1 <<". " << ((currentOptions)->at(0))->name << std::endl;
-    std::cout << 2 <<". " << ((currentOptions)->at(1))->name << std::endl;
-    std::cout << 3 <<". " << ((currentOptions)->at(2))->name << std::endl;
+    std::cout << 1 <<". " << ((Furniture*)(currentOptions)->at(0))->name << std::endl;
+    std::cout << 2 <<". " << ((Npc*)(currentOptions)->at(1))->name << std::endl;
+    std::cout << 3 <<". " << ((Furniture*)(currentOptions)->at(2))->name << std::endl;
 
 
     std::cin >> userInput;
