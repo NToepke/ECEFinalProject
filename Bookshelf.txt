@@ -3,6 +3,6 @@ Jeff
 It says "Hidden where it was found, is where it is hidden"
 Jeff
 There is a key hole behind the book that you found! It fits and you leave the room
-Jeff
+Finish
 NextRoom?
 Furniture

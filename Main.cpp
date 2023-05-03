@@ -137,6 +137,7 @@ void basicStory(Player* player, InteractObjectFactory factory)
     player->addInteraction(newStory[0]);
     player->addInteraction(newStory[1]);
     player->addInteraction(newStory[2]);
+    player->mapInteraction(new Npc("Finish"));
 }
 
 int main()

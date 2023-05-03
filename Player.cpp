@@ -60,7 +60,7 @@ int Player::incrementInteractionMap(std::string interactName)
 }
 
 bool Player::isFinished() {
-    if (interactionMap.at("Jeff") == 3) {
+    if (interactionMap.at("Finish") == 1) {
         return true;
     }
     return false;
