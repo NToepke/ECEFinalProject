@@ -17,6 +17,21 @@ void Player::addInteraction(InteractObject* toAdd)
     mapInteraction(toAdd);
 }
 
+void Player::validateInteractions()
+{
+    std::vector<InteractObject*>::iterator it;
+    int i = 0;
+    for(it = currentInteractions.begin(); it != currentInteractions.end(); it++,i++)
+    {
+        if((int)currentInteractions[i]->descriptions.size() <= interactionMap.at(currentInteractions[i]->name))
+        {
+            currentInteractions.erase(it);
+            it--;
+            i--;
+        }
+    }
+}
+
 void Player::mapInteraction(InteractObject* toAdd)
 {
     interactionMap.insert({toAdd->name,0});
