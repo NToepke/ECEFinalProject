@@ -1,8 +1,8 @@
 It's a large wooden desk
 NONE
-There is something inside the desk, it looks like a key to translate the books
+There is something carved into the desk, it looks like a key to translate the red book! Go grab the book from the bookself!
 Bookshelf
-Wait there is an actual key hidden in a secret compartment! It looks like it can open the door
+Wait there is an actual key hidden in a secret compartment under the carved key! But where is the lock?
 Bookshelf
 NextRoom?
 Furniture
