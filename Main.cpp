@@ -12,6 +12,11 @@ std::string runMenu(Player* player)
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
     //variable to hold user selection
     int userInput = -1;
+
+    if(currentOptions->size() == 0)
+    {
+        return "-1";
+    }
     for(unsigned i = 1; i <= currentOptions->size(); i++)
     {
         //get the string from each InteractObject to print for user selection
@@ -63,7 +68,16 @@ int main()
 {
     Player* player = Player::getInstance(); //Create the player
     InteractObjectFactory factory;
+   
     //Intro
+    std::cout << "Welcome to the ECE Escape room. Surely you computer scientists will never get out.\n"
+    <<"Only computer engineers with real world technical skills like soldering and suffering through\n"
+    <<"More than just one logic gate class will be able to escape! Are you up to the task?\n\n"
+    <<"You've been locked in this small room with only a few people and notable items.\n"
+    <<"If you have your wits about you, you might be able to deduce your way out!\n\n\n"
+    <<"You will be given a list of items in the room to interact with. Enter the number\n"
+    <<"that corresponds to the item you'd like to investigate further. Good luck and have fun!" <<std::endl;
+
     //generate story
     basicStory(player,factory);
     //RunMenu loop
@@ -76,5 +90,6 @@ int main()
     while(chosenInteraction.compare("-1") != 0);
     //exit menu loop when game tells you to.
     //Thanks for playing message
+    std::cout << "\n\nGAME OVER\n\n\nThanks for playing!\n\n" << std::endl;
     return EXIT_SUCCESS;
 }
