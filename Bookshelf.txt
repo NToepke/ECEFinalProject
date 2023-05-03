@@ -1,8 +1,8 @@
 Its a bookshelf covered in odd books
 Jeff
-Hmm, I bet Jeff knows something about this...
+It says "Hidden where it was found, is where it is hidden"
 Jeff
-This has the same marking as the desk on it
+There is a key hole behind the book that you found! It fits and you leave the room
 Jeff
-Labratory
+NextRoom?
 Furniture

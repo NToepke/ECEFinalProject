@@ -1,8 +1,8 @@
-Hey! I'm Jeff, I may be an old, but im quite knowledgable on old books with strange markings
+Hey! I'm Jeff, I may be an old, but im quite knowledgable on old books
 Bookshelf
-Let me see those books you found, ahh just as I feared, in order to escape, you must uncover the truth I couldn't. Go downstairs to my labratory at once
-Jeff
-You saw what symbol? this is no good, hes returning go to my labratory this instant! You must stop him to save us
-Jeff
-Labratory
+Hmm looks like this is in code, looks like you need to find a translator to read this. Find me when you know what it says
+Desk
+It said what? Wow that sounds it was written by a tired engineering student. Maybe look somewhere you have already looked for something
+Desk
+NextRoom?
 Npc

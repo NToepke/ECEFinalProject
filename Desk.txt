@@ -1,8 +1,8 @@
-It's a desk with no drawers
+It's a large wooden desk
+NONE
+There is something inside the desk, it looks like a key to translate the books
 Bookshelf
-It's a desk with no drawers with a symbol that was seen on one of the strange books
+Wait there is an actual key! It looks like it can open the door
 Jeff
-It's a desk with no drawers, but I wonder if jeff knows anything about this symbol faintly on it
-Jeff
-Labratory
+NextRoom?
 Furniture
