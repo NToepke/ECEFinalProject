@@ -3,6 +3,6 @@ NONE
 There is something inside the desk, it looks like a key to translate the books
 Bookshelf
 Wait there is an actual key hidden in a secret compartment! It looks like it can open the door
-Jeff
+Bookshelf
 NextRoom?
 Furniture

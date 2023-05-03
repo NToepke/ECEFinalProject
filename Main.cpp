@@ -34,22 +34,33 @@ std::string runMenu(Player* player)
     
     */
     //Get the return value
-    int currentProgression = progressionMap->at(currentOptions->at(userInput-1)->name);
-    std::string printDesc = currentOptions->at(userInput-1)->descriptions[currentProgression];
+    InteractObject* interactedObject = currentOptions->at(userInput-1);
+
+    int currentProgression = progressionMap->at(interactedObject->name);
+    std::string printDesc = interactedObject->descriptions[currentProgression];
     
     
     //Increment the map, which tells the player not to reuse this line.
-    int checkFail = player->incrementInteractionMap(currentOptions->at(userInput-1)->name);
-    //check if the increment failed.
-    if(checkFail == -1)
-    {
-        std::cerr << "Increment failed, look above for error from method." << std::endl;
-        //game is broken, exit out
-        return "-1";
+    std::string interactionToIncrement = interactedObject->increments[currentProgression];
+    if (interactionToIncrement.compare("NONE") != 0) {
+        int checkFail = player->incrementInteractionMap(interactionToIncrement);
+        if(checkFail == -1)
+        {
+            std::cerr << "Increment failed, look above for error from method." << std::endl;
+            //game is broken, exit out
+            return "-1";
+        }
+        interactedObject->increments[currentProgression] = "NONE";
     }
+    //check if the increment failed.
+    
 
     //check if any interactions need to be removed from the list.
     player->validateInteractions();
+
+    if (player->isFinished()) {
+        return "-1";
+    }
 
     return printDesc;
 }
@@ -66,6 +77,7 @@ void basicStory(Player* player, InteractObjectFactory factory)
     int count = 1;
     std::vector<std::string> descriptionsToLoad;
     std::vector<std::string> objects;
+    std::vector<std::string> increments;
 
 
     try {
@@ -104,15 +116,24 @@ void basicStory(Player* player, InteractObjectFactory factory)
                 tempType = tempDialogue;
             }
             if (count % 2 == 0 && count % 8 != 0) {
-                // Object to increment in option goes here (This will hit lines 2 4 6)
+                increments.push_back(tempDialogue);
             }
             if (count % 2 == 1 && count % 7 != 0) {
                 descriptionsToLoad.push_back(tempDialogue);
             }
             count++;
         }
-        newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad));
+        for (auto str : descriptionsToLoad) {
+            std::cout << str << "\t";
+        }
+        std::cout << "\n";
+        for (auto str : increments) {
+            std::cout << str << "\t";
+        }
+        std::cout << "\n";
+        newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad, increments));
         descriptionsToLoad.clear();
+        increments.clear();
         dataFile.close();
         std::cin.clear();
         } catch(std::string x) {

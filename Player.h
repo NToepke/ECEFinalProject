@@ -26,6 +26,7 @@ class Player {
         std::map<std::string,int>* getInteractionMap();
         std::string Location;
         int incrementInteractionMap(std::string interactName);
+        bool isFinished();
 };
 
 

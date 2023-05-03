@@ -16,6 +16,13 @@ Furniture::Furniture(std::string name, std::vector<std::string> descriptions)
     this->descriptions = descriptions;
 }
 
+Furniture::Furniture(std::string name, std::vector<std::string> descriptions, std::vector<std::string> increments)
+{
+    this->name = name;
+    this->descriptions = descriptions;
+    this->increments = increments;
+}
+
 void Furniture::setDescriptions(std::vector<std::string> descriptions)
 {
     this->descriptions = descriptions;

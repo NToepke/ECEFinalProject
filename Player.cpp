@@ -58,3 +58,10 @@ int Player::incrementInteractionMap(std::string interactName)
     }
     return interactionMap.at(interactName);
 }
+
+bool Player::isFinished() {
+    if (interactionMap.at("Jeff") == 3) {
+        return true;
+    }
+    return false;
+}

@@ -2,15 +2,15 @@
 #include "Furniture.h"
 #include "Npc.h"
 
-InteractObject* InteractObjectFactory::getInteractObject(std::string objectType, std::string name, std::vector<std::string> descriptions)
+InteractObject* InteractObjectFactory::getInteractObject(std::string objectType, std::string name, std::vector<std::string> descriptions, std::vector<std::string> increments)
 {
     if(objectType.compare("Furniture")==0)
     {
-        return new Furniture(name,descriptions);
+        return new Furniture(name,descriptions, increments);
     }
     else if(objectType.compare("Npc")==0)
     {
-        return new Npc(name,descriptions);
+        return new Npc(name,descriptions, increments);
     }
     else
     {
