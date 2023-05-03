@@ -10,6 +10,7 @@
 
 std::string runMenu(Player* player)
 {
+    //checks for completion of story without player currentInteractions being empty.
     if (player->isFinished()) {
         return "-1";
     }
@@ -19,7 +20,7 @@ std::string runMenu(Player* player)
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
     //variable to hold user selection
     int userInput = -1;
-
+    //There is no options for the player to choose from
     if(currentOptions->size() == 0)
     {
         return "-1";
@@ -40,6 +41,7 @@ std::string runMenu(Player* player)
     //Get the return value
     InteractObject* interactedObject = currentOptions->at(userInput-1);
 
+    //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
     std::string printDesc = interactedObject->descriptions[currentProgression];
     
@@ -99,15 +101,22 @@ void basicStory(Player* player, InteractObjectFactory factory)
     fs.clear();
     for (std::string object : objects) {
         try {
+            //temp holds the objects name, to load the objects.txt file.
             std::string temp = object;
             temp.append(".txt");
+            //load the filename into the filestream
             std::ifstream dataFile(temp.c_str());
+            //error trap to see if file can be opened.
             if (!dataFile.is_open()) {
                 throw object;
             } else {
+                //file is open. Set the counter to be line 1, as thats the first line in the file.
                 count = 1;
             }
+            //loop through the file, getting each line to build the InteractObject.
             while(std::getline(dataFile, tempDialogue)) {
+                // 7 is the second to last line, indicating the next room
+                // 8 is the type of this object given the file.
             if (count % 7 == 0) {
                 // Switching what location the player will go to next (Can change this to be on that specific option this is just a temp solution)
                 player->Location = tempDialogue; 
@@ -115,28 +124,39 @@ void basicStory(Player* player, InteractObjectFactory factory)
             if (count % 8 == 0) {
                 tempType = tempDialogue;
             }
+            //every even line is the name of the object to increment.
+            //this means when the associated text is shown, what other InteractObject does this text
+            //advance? For example, if a bookshelf text is "You should ask jeff about this", the 
+            //increment would likely be "Jeff" to move jeff to a new text to print.
             if (count % 2 == 0 && count % 8 != 0) {
                 increments.push_back(tempDialogue);
             }
+            //every odd line is the text to display at this progression value.
+            //At the begining, the description is usually basic, saying something like "This is a thing. it looks normal."
+            //as the story progresses, this dialogue will change to reflect story progression.
             if (count % 2 == 1 && count % 7 != 0) {
                 descriptionsToLoad.push_back(tempDialogue);
             }
-            count++;
+            count++; //increment counter, which is tracking which line of the .txt we are on.
         }
+        //send this parsed object to the factory for creation, and then add it to the return value.
         newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad, increments));
+        //clean up memory allocations
         descriptionsToLoad.clear();
         increments.clear();
         dataFile.close();
         std::cin.clear();
+        //this catch is for the failed file opening.
         } catch(std::string x) {
             std::cout << "Failed To load " << x << std::endl;
             return;
         }
     }
+    //loop through the created InteractObjects and add them to the player vector for tracking.
     for(auto story : newStory) {
         player->addInteraction(story);
     }
-
+    //add one more interaction, which allows the game to track the end condition of the game.
     player->mapInteraction(new Npc("Finish"));
 }
 
