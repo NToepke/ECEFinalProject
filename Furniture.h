@@ -14,8 +14,6 @@
 
 class Furniture : public InteractObject{
     public:
-
-
         Furniture();
         Furniture(std::string name);
         Furniture(std::string name,std::vector<std::string> descriptions);
