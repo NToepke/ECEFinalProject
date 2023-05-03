@@ -10,6 +10,10 @@
 
 std::string runMenu(Player* player)
 {
+    if (player->isFinished()) {
+        return "-1";
+    }
+
     //pull player variables into local scope for easier code readability
     std::vector<InteractObject*>* currentOptions = player->getInteractions();
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
@@ -57,10 +61,6 @@ std::string runMenu(Player* player)
 
     //check if any interactions need to be removed from the list.
     player->validateInteractions();
-
-    if (player->isFinished()) {
-        return "-1";
-    }
 
     return printDesc;
 }
@@ -123,14 +123,6 @@ void basicStory(Player* player, InteractObjectFactory factory)
             }
             count++;
         }
-        for (auto str : descriptionsToLoad) {
-            std::cout << str << "\t";
-        }
-        std::cout << "\n";
-        for (auto str : increments) {
-            std::cout << str << "\t";
-        }
-        std::cout << "\n";
         newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad, increments));
         descriptionsToLoad.clear();
         increments.clear();
