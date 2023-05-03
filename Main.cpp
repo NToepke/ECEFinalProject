@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
 #include "Player.h"
 #include "Npc.h"
 #include "Furniture.h"
@@ -53,11 +56,70 @@ std::string runMenu(Player* player)
 
 void basicStory(Player* player, InteractObjectFactory factory)
 {
+    std::fstream fs;
+    std::fstream ofs;
     std::vector<InteractObject*> newStory;
+    std::string locationToLoad = player->Location + ".txt";
+    std::string temp;
+    std::string tempDialogue;
+    std::string tempType;
+    int count = 1;
+    std::vector<std::string> descriptionsToLoad;
+    std::vector<std::string> objects;
 
-    newStory.push_back(factory.getInteractObject("Furniture","Bookshelf",{"Its a bookshelf covered in books.","Story 2","Story 3"}));
-    newStory.push_back(factory.getInteractObject("Npc","Jeff",{"Hi!","I read books. This one is about the bottom of a desk.","Story 3"}));
-    newStory.push_back(factory.getInteractObject("Furniture","Desk",{"It's a small desk with no drawers.","There is a key stuck to the bottom of the desk.","Story 3"}));
+
+    try {
+        fs.open(locationToLoad, std::ios::out | std::ios::in | std::ios::binary);
+        if (!fs.is_open()) {
+            throw locationToLoad;
+        }
+    }
+    catch(std::string ex) {
+        std::cout<< "failed to load location " << ex << std::endl;
+        return;
+    }
+    
+    
+    while(fs >> temp) {
+        objects.push_back(temp);
+    }
+    fs.close();
+    fs.clear();
+    for (std::string object : objects) {
+        try {
+            std::string temp = object;
+            temp.append(".txt");
+            std::ifstream dataFile(temp.c_str());
+            if (!dataFile.is_open()) {
+                throw object;
+            } else {
+                count = 1;
+            }
+            while(std::getline(dataFile, tempDialogue)) {
+            if (count % 7 == 0) {
+                // Switching what location the player will go to next (Can change this to be on that specific option this is just a temp solution)
+                player->Location = tempDialogue; 
+            }
+            if (count % 8 == 0) {
+                tempType = tempDialogue;
+            }
+            if (count % 2 == 0 && count % 8 != 0) {
+                // Object to increment in option goes here (This will hit lines 2 4 6)
+            }
+            if (count % 2 == 1 && count % 7 != 0) {
+                descriptionsToLoad.push_back(tempDialogue);
+            }
+            count++;
+        }
+        newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad));
+        descriptionsToLoad.clear();
+        dataFile.close();
+        std::cin.clear();
+        } catch(std::string x) {
+            std::cout << "Failed To load " << x << std::endl;
+            return;
+        }
+    }
 
     player->addInteraction(newStory[0]);
     player->addInteraction(newStory[1]);
@@ -67,6 +129,7 @@ void basicStory(Player* player, InteractObjectFactory factory)
 int main()
 {
     Player* player = Player::getInstance(); //Create the player
+    player->Location = "Start";
     InteractObjectFactory factory;
    
     //Intro
@@ -80,6 +143,7 @@ int main()
 
     //generate story
     basicStory(player,factory);
+
     //RunMenu loop
     std::string chosenInteraction = "";
     do

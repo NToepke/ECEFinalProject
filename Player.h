@@ -24,6 +24,7 @@ class Player {
         void mapInteraction(InteractObject* toAdd);
         std::vector<InteractObject*>* getInteractions();
         std::map<std::string,int>* getInteractionMap();
+        std::string Location;
         int incrementInteractionMap(std::string interactName);
 };
 
