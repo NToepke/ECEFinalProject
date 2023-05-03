@@ -14,11 +14,12 @@
 
 class Furniture : public InteractObject{
     public:
-        std::string name;
-        std::vector<std::string> descriptions;
+
 
         Furniture();
         Furniture(std::string name);
+        Furniture(std::string name,std::vector<std::string> descriptions);
+        
         void setDescriptions(std::vector<std::string> descriptions);
         std::string giveDescription(int currentProgression);
 
