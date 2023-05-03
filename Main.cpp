@@ -133,10 +133,10 @@ void basicStory(Player* player, InteractObjectFactory factory)
             return;
         }
     }
+    for(auto story : newStory) {
+        player->addInteraction(story);
+    }
 
-    player->addInteraction(newStory[0]);
-    player->addInteraction(newStory[1]);
-    player->addInteraction(newStory[2]);
     player->mapInteraction(new Npc("Finish"));
 }
 
