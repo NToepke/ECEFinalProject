@@ -20,6 +20,7 @@ class Player {
     public:
         static Player* getInstance();
         void addInteraction(InteractObject* toAdd);
+        void validateInteractions();
         void mapInteraction(InteractObject* toAdd);
         std::vector<InteractObject*>* getInteractions();
         std::map<std::string,int>* getInteractionMap();
