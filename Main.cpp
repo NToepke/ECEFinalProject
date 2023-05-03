@@ -66,10 +66,6 @@ int main()
     //Intro
     //generate story
     basicStory(player,factory);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     //RunMenu loop
     std::string chosenInteraction = "";
     do
