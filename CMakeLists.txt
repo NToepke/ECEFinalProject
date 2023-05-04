@@ -17,7 +17,9 @@ enable_testing()
 
 add_executable(
   hello_test
+  FurnitureTests
   hello_test.cc
+  FurnitureTests.cc
 )
 target_link_libraries(
   hello_test
