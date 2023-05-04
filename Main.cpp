@@ -48,7 +48,9 @@ std::string runMenu(Player* player)
     
     //Increment the map, which tells the player not to reuse this line.
     std::string interactionToIncrement = interactedObject->increments[currentProgression];
+    interactionToIncrement.resize(interactionToIncrement.size() - 1);
     if (interactionToIncrement.compare("NONE") != 0) {
+        std::cout << interactionToIncrement << std::endl;
         int checkFail = player->incrementInteractionMap(interactionToIncrement);
         if(checkFail == -1)
         {
