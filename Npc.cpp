@@ -28,7 +28,7 @@ Npc::Npc(std::string name, std::vector<std::string> descriptions, std::vector<st
 
 std::string Npc::giveDescription(int currentProgression)
 {
-    return "";
+    return this->descriptions[currentProgression];
 }
 
 Npc::~Npc()
