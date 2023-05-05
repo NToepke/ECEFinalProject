@@ -48,6 +48,7 @@ std::string runMenu(Player* player)
     
     //Increment the map, which tells the player not to reuse this line.
     std::string interactionToIncrement = interactedObject->increments[currentProgression];
+    //NEEDED for the file parsed stuff, not needed
     interactionToIncrement.resize(interactionToIncrement.size() - 1);
     if (interactionToIncrement.compare("NONE") != 0) {
         std::cout << interactionToIncrement << std::endl;
@@ -58,7 +59,7 @@ std::string runMenu(Player* player)
             //game is broken, exit out
             return "-1";
         }
-        interactedObject->increments[currentProgression] = "NONE";
+        interactedObject->increments[currentProgression] = "NONE\n";
     }
     //check if the increment failed.
     
