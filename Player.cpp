@@ -50,7 +50,17 @@ std::map<std::string,int>* Player::getInteractionMap()
 int Player::incrementInteractionMap(std::string interactName)
 {
     try {
+        if(interactName.compare("NextRoom") == 0)
+        {
+            for(auto x : interactionMap)
+            {
+                incrementInteractionMap(x.first);
+            }
+            return 0;
+        }
+        else{
         interactionMap.at(interactName)++;
+        }
     }
     catch (const std::out_of_range& e){
         std::cerr << "Error: " << e.what() << std::endl;

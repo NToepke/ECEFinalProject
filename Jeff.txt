@@ -1,9 +1,13 @@
-8
+12
 Hey! I'm Jeff, I may be an old, but im quite knowledgable on old books.
 NONE
 Hmm looks like that book is in code, you'll need to find a translator to read this. Find me when you know what it says.
 Desk
 It said what? Wow that sounds it was written by a tired engineering student. Maybe look somewhere you have already looked for something...
 Desk
+Jeff says this in room 2
+Jeff
+Jeff says this in room 2 again
+NONE
 NextRoom?
 Npc
