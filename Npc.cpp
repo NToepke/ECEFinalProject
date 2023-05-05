@@ -30,3 +30,10 @@ std::string Npc::giveDescription(int currentProgression)
 {
     return "";
 }
+
+Npc::~Npc()
+{
+    this->name = "";
+    this->descriptions.clear();
+    this->increments.clear();
+}

@@ -32,3 +32,10 @@ std::string Furniture::giveDescription(int currentProgression)
 {
     return this->descriptions[currentProgression];
 }
+
+Furniture::~Furniture()
+{
+    this->name = "";
+    this->descriptions.clear();
+    this->increments.clear();
+}
