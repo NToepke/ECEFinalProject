@@ -43,7 +43,7 @@ std::string runMenu(Player* player)
 
     //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
-    std::string printDesc = interactedObject->descriptions[currentProgression];
+    std::string printDesc = interactedObject->giveDescription(currentProgression);
     
     
     //Increment the map, which tells the player not to reuse this line.
