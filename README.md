@@ -15,4 +15,8 @@ Modularity for loading new stories with an easy to modify file loading system.
 GTests used to verify the stability of our project's code.
 Docker container compatibility to allow for our project to be easily deployed on any environment.
 
-To run our project: Utilize the docker container, and run the container to create a docker image, which will automatically compile and launch the game.
+To run our project: Utilize the docker container provided at this link: 
+or use the command: docker build -t escaperoom .
+
+then run the container as an interactable image
+by running the command: docker run --rm -it escaperoom

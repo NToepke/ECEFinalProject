@@ -51,7 +51,7 @@ std::string runMenu(Player* player)
     //NEEDED for the file parsed stuff, not needed
     interactionToIncrement.resize(interactionToIncrement.size() - 1);
     if (interactionToIncrement.compare("NONE") != 0) {
-        std::cout << interactionToIncrement << std::endl;
+        //std::cout << interactionToIncrement << std::endl;
         int checkFail = player->incrementInteractionMap(interactionToIncrement);
         if(checkFail == -1)
         {
