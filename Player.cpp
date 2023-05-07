@@ -54,6 +54,8 @@ int Player::incrementInteractionMap(std::string interactName)
     }
     catch (const std::out_of_range& e){
         std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "interactName: " << interactName << std::endl;
+        std::cerr << "interactName length: " << interactName.length() << std::endl;
         return -1;
     }
     return interactionMap.at(interactName);
