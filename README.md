@@ -17,6 +17,7 @@ Docker container compatibility to allow for our project to be easily deployed on
 
 To run our project: Utilize the docker container provided at this link: 
 or use the command: docker build -t escaperoom .
+after cloning down the github repo to your local machine.
 
 then run the container as an interactable image
 by running the command: docker run --rm -it escaperoom
