@@ -56,7 +56,7 @@ std::string runMenu(Player* player)
             //game is broken, exit out
             return "-1";
         }
-        interactedObject->increments[currentProgression] = "NONE\n";
+        interactedObject->increments[currentProgression] = "NONE";
     }
     //check if the increment failed.
     
