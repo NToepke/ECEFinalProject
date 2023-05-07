@@ -16,7 +16,8 @@ class Npc : public InteractObject{
         Npc(std::string name);
         Npc(std::string name, std::vector<std::string> descriptions);
         Npc(std::string name, std::vector<std::string> descriptions, std::vector<std::string> increments);
-        
+        ~Npc();
+
         void setDescriptions(std::vector<std::string> descriptions);
         std::string giveDescription(int currentProgression);
 };

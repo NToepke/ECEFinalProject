@@ -1,8 +1,9 @@
+8
 Its a bookshelf covered in odd books. One red book stands out to you.
 Jeff
 The only non gibberish text you can decipher is "Hidden where it was found, is where it is hidden". Maybe ask Jeff?
 Jeff
 You find a keyhole behind another book, and the key works! The bookcase swings outward, revealing a path to a new room.
-Finish
+NextRoom
 NextRoom?
 Furniture

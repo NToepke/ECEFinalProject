@@ -44,7 +44,7 @@ std::string runMenu(Player* player)
     InteractObject* interactedObject = currentOptions->at(userInput-1);
     //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
-    std::string printDesc = interactedObject->descriptions[currentProgression];
+    std::string printDesc = interactedObject->giveDescription(currentProgression);
     
     //Increment the map, which tells the player not to reuse this line.
     std::string interactionToIncrement = interactedObject->increments[currentProgression];
@@ -56,7 +56,7 @@ std::string runMenu(Player* player)
             //game is broken, exit out
             return "-1";
         }
-        interactedObject->increments[currentProgression] = "NONE";
+        interactedObject->increments[currentProgression] = "NONE\n";
     }
     //check if the increment failed.
     
@@ -76,7 +76,8 @@ void basicStory(Player* player, InteractObjectFactory factory)
     std::string temp;
     std::string tempDialogue;
     std::string tempType;
-    int count = 1;
+    int fileLength = 0;
+    int count = 0;
     std::vector<std::string> descriptionsToLoad;
     std::vector<std::string> objects;
     std::vector<std::string> increments;
@@ -110,8 +111,8 @@ void basicStory(Player* player, InteractObjectFactory factory)
             if (!dataFile.is_open()) {
                 throw object;
             } else {
-                //file is open. Set the counter to be line 1, as thats the first line in the file.
-                count = 1;
+                //file is open. Set the counter to be line 0, as thats the first line in the file.
+                count = 0;
             }
             //loop through the file, getting each line to build the InteractObject.
             while(std::getline(dataFile, tempDialogue)) {
@@ -120,11 +121,17 @@ void basicStory(Player* player, InteractObjectFactory factory)
                 }
                 // 7 is the second to last line, indicating the next room
                 // 8 is the type of this object given the file.
-            if (count % 7 == 0) {
+            if(count == 0)
+            {
+                fileLength = std::stoi(tempDialogue);
+            }
+
+
+            if (count % (fileLength - 1) == 0) {
                 // Switching what location the player will go to next (Can change this to be on that specific option this is just a temp solution)
                 player->Location = tempDialogue; 
             }
-            if (count % 8 == 0) {
+            if (count % fileLength == 0) {
                 tempType = tempDialogue;
             }
             //every even line is the name of the object to increment.
