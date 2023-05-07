@@ -1,12 +1,26 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <fstream>
+#include <iostream> //for simple I/O operations with cin/cout
+#include <string> //For using std::string in the code
+#include <sstream> //for fileIO code
+#include <fstream> //for fileIO
+#include <climits> //for INT_MAX
 #include "Player.h"
 #include "Npc.h"
 #include "Furniture.h"
 #include "InteractObject.h"
 #include "InteractObjectFactory.h"
+
+//Helper function for checking the user input for the do-while loop in run menu
+int checkUserInput(int userInput,int maxOption)
+{
+    if(userInput > maxOption || userInput < 1)
+    {
+        std::cout << "Invalid choice, try again!" <<std::endl;
+        std::cin.clear();
+        //std::cin.ignore(INT_MAX);
+        return -1;
+    }
+    return userInput;
+}
 
 std::string runMenu(Player* player)
 {
@@ -25,22 +39,23 @@ std::string runMenu(Player* player)
     {
         return "-1";
     }
-    for(unsigned i = 1; i <= currentOptions->size(); i++)
+    unsigned i = 1;
+    for(; i <= currentOptions->size(); i++)
     {
         //get the string from each InteractObject to print for user selection
         //print the name for user to see and choose from.
         std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
     }
 
-    //read userInput
-    std::cin >> userInput;
-    /*
-    
-    Error trap here for bad user input
-    
-    */
-    //Get the return value
+    //read userInput, catch invalid answers
+    int checkedInput = -1;
+    do
+    {
+        std::cin >> userInput;
+        checkedInput = checkUserInput(userInput,((int)i));
+    }while(checkedInput < 0);
 
+    //Get the return value
     InteractObject* interactedObject = currentOptions->at(userInput-1);
     //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
@@ -197,6 +212,8 @@ int main()
     }
     while(chosenInteraction.compare("-1") != 0);
     //exit menu loop when game tells you to.
+    //Time to clean up objects
+    delete player;
     //Thanks for playing message
     std::cout << "\n\nGAME OVER\n\n\nThanks for playing!\n\n" << std::endl;
     return EXIT_SUCCESS;
