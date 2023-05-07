@@ -10,14 +10,14 @@
 
 std::string runMenu(Player* player)
 {
-    //checks for completion of story without player currentInteractions being empty.
-    if (player->isFinished()) {
-        return "-1";
-    }
-
     //pull player variables into local scope for easier code readability
     std::vector<InteractObject*>* currentOptions = player->getInteractions();
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
+
+    if (progressionMap->at("Finish") == 1) {
+        //Player has beaten first room
+        return "-1";
+    }
     //variable to hold user selection
     int userInput = -1;
     //There is no options for the player to choose from
@@ -31,6 +31,7 @@ std::string runMenu(Player* player)
         //print the name for user to see and choose from.
         std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
     }
+
     //read userInput
     std::cin >> userInput;
     /*
@@ -39,19 +40,15 @@ std::string runMenu(Player* player)
     
     */
     //Get the return value
-    InteractObject* interactedObject = currentOptions->at(userInput-1);
 
+    InteractObject* interactedObject = currentOptions->at(userInput-1);
     //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
     std::string printDesc = interactedObject->giveDescription(currentProgression);
     
-    
     //Increment the map, which tells the player not to reuse this line.
     std::string interactionToIncrement = interactedObject->increments[currentProgression];
-    //NEEDED for the file parsed stuff, not needed
-    interactionToIncrement.resize(interactionToIncrement.size() - 1);
     if (interactionToIncrement.compare("NONE") != 0) {
-        //std::cout << interactionToIncrement << std::endl;
         int checkFail = player->incrementInteractionMap(interactionToIncrement);
         if(checkFail == -1)
         {
@@ -119,6 +116,9 @@ void basicStory(Player* player, InteractObjectFactory factory)
             }
             //loop through the file, getting each line to build the InteractObject.
             while(std::getline(dataFile, tempDialogue)) {
+                if (tempDialogue.at(tempDialogue.size()-1) == '\n' || tempDialogue.at(tempDialogue.size()-1) == '\r') {
+                    tempDialogue.resize(tempDialogue.size() - 1);
+                }
                 // 7 is the second to last line, indicating the next room
                 // 8 is the type of this object given the file.
             if(count == 0)

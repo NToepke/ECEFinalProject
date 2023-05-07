@@ -1,6 +1,6 @@
 
 .vscode/settings.json
 *.o
-escapeGame
 escapeGame.exe
+escapeGame
 build
