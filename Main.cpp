@@ -14,7 +14,6 @@ std::string runMenu(Player* player)
     if (player->isFinished()) {
         return "-1";
     }
-
     //pull player variables into local scope for easier code readability
     std::vector<InteractObject*>* currentOptions = player->getInteractions();
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
@@ -31,6 +30,7 @@ std::string runMenu(Player* player)
         //print the name for user to see and choose from.
         std::cout << i <<". " << currentOptions->at(i-1)->name << std::endl;
     }
+
     //read userInput
     std::cin >> userInput;
     /*
@@ -39,8 +39,8 @@ std::string runMenu(Player* player)
     
     */
     //Get the return value
-    InteractObject* interactedObject = currentOptions->at(userInput-1);
 
+    InteractObject* interactedObject = currentOptions->at(userInput-1);
     //get the return value, which is the description to show based on the users choice.
     int currentProgression = progressionMap->at(interactedObject->name);
     std::string printDesc = interactedObject->descriptions[currentProgression];
@@ -48,9 +48,7 @@ std::string runMenu(Player* player)
     
     //Increment the map, which tells the player not to reuse this line.
     std::string interactionToIncrement = interactedObject->increments[currentProgression];
-    interactionToIncrement.resize(interactionToIncrement.size() - 1);
     if (interactionToIncrement.compare("NONE") != 0) {
-        std::cout << interactionToIncrement << std::endl;
         int checkFail = player->incrementInteractionMap(interactionToIncrement);
         if(checkFail == -1)
         {
