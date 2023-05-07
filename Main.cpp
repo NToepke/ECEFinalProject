@@ -115,7 +115,7 @@ void basicStory(Player* player, InteractObjectFactory factory)
             }
             //loop through the file, getting each line to build the InteractObject.
             while(std::getline(dataFile, tempDialogue)) {
-                if (tempDialogue.at(tempDialogue.size()-1) == '\n') {
+                if (tempDialogue.at(tempDialogue.size()-1) == '\n' || tempDialogue.at(tempDialogue.size()-1) == '\r') {
                     tempDialogue.resize(tempDialogue.size() - 1);
                 }
                 // 7 is the second to last line, indicating the next room
