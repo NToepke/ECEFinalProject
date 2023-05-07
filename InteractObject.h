@@ -10,6 +10,7 @@ class InteractObject {
         std::vector<std::string> increments;
         virtual void setDescriptions(std::vector<std::string> descriptions) = 0;
         virtual std::string giveDescription(int currentProgression) = 0;
+        virtual ~InteractObject() = 0;
 };
 
 #endif
