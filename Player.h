@@ -27,6 +27,7 @@ class Player {
         std::string Location;
         int incrementInteractionMap(std::string interactName);
         bool isFinished();
+        int roomsCleared;
         ~Player();
 };
 

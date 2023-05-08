@@ -1,0 +1,9 @@
+8
+It is a strange Tablet, nothing you've ever seen before. There are ports on it that you do not recognize. It is very slim and currently locked. It does have a working flashlight though.
+Computer
+You plug in the tablet and a weird gui in a different language pops up. It appears to be the layout of the room
+Jeff
+You plug the tablet into the door, it pops up with a similar menu as before, you press a button on the menu just like Jeff did before
+Computer
+END
+Furniture

@@ -9,6 +9,10 @@
 #include "InteractObject.h"
 #include "InteractObjectFactory.h"
 
+void basicStory(Player*, InteractObjectFactory);
+int checkUserInput(int, int);
+std::string runMenu(Player*, InteractObjectFactory);
+
 //Helper function for checking the user input for the do-while loop in run menu
 int checkUserInput(int userInput,int maxOption)
 {
@@ -22,16 +26,29 @@ int checkUserInput(int userInput,int maxOption)
     return userInput;
 }
 
-std::string runMenu(Player* player)
+std::string runMenu(Player* player, InteractObjectFactory factory)
 {
+    if (player->isFinished()) {
+        switch (player->roomsCleared) {
+            case 0:
+                player->getInteractionMap()->at("Finish") = 0;
+                player->getInteractionMap()->at("Jeff")++;
+                player->getInteractionMap()->at("Desk")++;
+                player->getInteractionMap()->at("Bookshelf")++;
+                player->validateInteractions();
+                std::cout << "You and Jeff enter the this new room. It is dark and hard to see but you can barely make out a few things\n";
+                basicStory(player, factory);
+                player->roomsCleared++;
+                break;
+            case 1:
+            default:
+                return "-1";
+                break;
+        }
+    }
     //pull player variables into local scope for easier code readability
     std::vector<InteractObject*>* currentOptions = player->getInteractions();
     std::map<std::string,int>* progressionMap = player->getInteractionMap();
-
-    if (progressionMap->at("Finish") == 1) {
-        //Player has beaten first room
-        return "-1";
-    }
     //variable to hold user selection
     int userInput = -1;
     //There is no options for the player to choose from
@@ -153,13 +170,13 @@ void basicStory(Player* player, InteractObjectFactory factory)
             //this means when the associated text is shown, what other InteractObject does this text
             //advance? For example, if a bookshelf text is "You should ask jeff about this", the 
             //increment would likely be "Jeff" to move jeff to a new text to print.
-            if (count % 2 == 0 && count % 8 != 0) {
+            if (count % 2 == 0 && (count != fileLength) && count != 0) {
                 increments.push_back(tempDialogue);
             }
             //every odd line is the text to display at this progression value.
             //At the begining, the description is usually basic, saying something like "This is a thing. it looks normal."
             //as the story progresses, this dialogue will change to reflect story progression.
-            if (count % 2 == 1 && count % 7 != 0) {
+            if (count % 2 == 1 && (count != fileLength-1) && count != 0) {
                 descriptionsToLoad.push_back(tempDialogue);
             }
             count++; //increment counter, which is tracking which line of the .txt we are on.
@@ -191,6 +208,7 @@ int main()
 {
     Player* player = Player::getInstance(); //Create the player
     player->Location = "Start";
+    player->roomsCleared = 0;
     InteractObjectFactory factory;
    
     //Intro
@@ -210,7 +228,7 @@ int main()
     do
     {
         std::cout << chosenInteraction <<std::endl;
-        chosenInteraction = runMenu(player);
+        chosenInteraction = runMenu(player, factory);
     }
     while(chosenInteraction.compare("-1") != 0);
     //exit menu loop when game tells you to.

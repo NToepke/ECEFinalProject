@@ -11,18 +11,30 @@ Npc::Npc(std::string name)
 Npc::Npc(std::string name, std::vector<std::string> descriptions)
 {
     this->name = name;
-    this->descriptions = descriptions;
+    std::vector<std::string> descriptionsWithName;
+    for(auto description : descriptions) {
+        descriptionsWithName.push_back(this->name + ": " + description);
+    }
+    this->descriptions = descriptionsWithName;
 }
 
 void Npc::setDescriptions(std::vector<std::string> descriptions)
 {
-    this->descriptions = descriptions;
+    std::vector<std::string> descriptionsWithName;
+    for(auto description : descriptions) {
+        descriptionsWithName.push_back(name + ": " + description);
+    }
+    this->descriptions = descriptionsWithName;
 }
 
 Npc::Npc(std::string name, std::vector<std::string> descriptions, std::vector<std::string> increments)
 {
     this->name = name;
-    this->descriptions = descriptions;
+    std::vector<std::string> descriptionsWithName;
+    for(auto description : descriptions) {
+        descriptionsWithName.push_back(name + ": " + description);
+    }
+    this->descriptions = descriptionsWithName;
     this->increments = increments;
 }
 

@@ -5,9 +5,9 @@ Hmm looks like that book is in code, you'll need to find a translator to read th
 Desk
 It said what? Wow that sounds it was written by a tired engineering student. Maybe look somewhere you have already looked for something...
 Desk
-Jeff says this in room 2
-Jeff
-Jeff says this in room 2 again
+Gee golly I wish I can't see a thing in here
 NONE
-NextRoom?
+Hmm it is a similar language to the one from the last room. It looks like it is a layout of the room we are in. I'm gonna press the button for the door
+Door
+NextRoom
 Npc
