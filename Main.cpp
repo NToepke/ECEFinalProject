@@ -203,13 +203,13 @@ int main()
     InteractObjectFactory factory;
    
     //Intro
-    std::cout << "Welcome to the ECE Escape room. Surely you computer scientists will never get out.\n"
-    <<"Only computer engineers with real world technical skills like soldering and suffering through\n"
-    <<"More than just one logic gate class will be able to escape! Are you up to the task?\\n"
-    <<"You've been locked in this small room with only a few people and notable items.\n"
+    std::cout << "Welcome to Tom and Nathan's escape room project.\n"
+    <<"Our lore skills are amazing, so prepare to be wowed by the depth and variety of our character design.\n"
+    <<"Try your best to enjoy the story, and thanks for playing!\n\n"
+    <<"You've been locked in this small room with only your buddy Jeff and two pieces of furniture.\n"
     <<"If you have your wits about you, you might be able to deduce your way out!\n"
-    <<"You will be given a list of items in the room to interact with. Enter the number\n"
-    <<"that corresponds to the item you'd like to investigate further. Good luck and have fun!" <<std::endl;
+    <<"You will be given a list of things in the room to interact with. Enter the number\n"
+    <<"that corresponds to the thing you'd like to investigate further. Good luck and have fun!" <<std::endl;
 
     //generate story
     basicStory(player,factory);
