@@ -15,7 +15,7 @@ Modularity for loading new stories with an easy to modify file loading system.
 GTests used to verify the stability of our project's code.
 Docker container compatibility to allow for our project to be easily deployed on any environment.
 
-To run our project: Utilize the docker container provided at this link: 
+To run our project: Utilize the docker container provided at this link: https://hub.docker.com/repository/docker/ntoepke/escaperoom/general
 or use the command: docker build -t escaperoom .
 after cloning down the github repo to your local machine.
 
