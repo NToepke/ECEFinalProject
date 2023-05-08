@@ -165,10 +165,14 @@ void basicStory(Player* player, InteractObjectFactory factory)
             count++; //increment counter, which is tracking which line of the .txt we are on.
         }
         //send this parsed object to the factory for creation, and then add it to the return value.
-        newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad, increments));
+        InteractObject* fileObject = factory.getInteractObject(tempType,object,descriptionsToLoad, increments);
+        newStory.push_back(fileObject);
+        //delete fileObject;
+        //newStory.push_back(factory.getInteractObject(tempType, object, descriptionsToLoad, increments));
         //clean up memory allocations
         descriptionsToLoad.clear();
         increments.clear();
+        fileObject = nullptr;
         dataFile.close();
         std::cin.clear();
         //this catch is for the failed file opening.

@@ -6,16 +6,18 @@ InteractObject* InteractObjectFactory::getInteractObject(std::string objectType,
 {
     if(objectType.compare("Furniture")==0)
     {
-        return new Furniture(name,descriptions, increments);
+        Furniture* retVal = new Furniture(name,descriptions, increments);
+        return retVal;
     }
     else if(objectType.compare("Npc")==0)
     {
-        return new Npc(name,descriptions, increments);
+        Npc* retVal = new Npc(name,descriptions, increments);
+        return retVal;
     }
     else
     {
         //Error
-        //std::cout << "ERROR" << std::endl;
+        //std::cout << "ERROR" << std::endl
         return nullptr;
     }
 }
