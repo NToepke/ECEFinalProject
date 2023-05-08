@@ -2,7 +2,6 @@
 #include <string> //For using std::string in the code
 #include <sstream> //for fileIO code
 #include <fstream> //for fileIO
-#include <climits> //for INT_MAX
 #include "Player.h"
 #include "Npc.h"
 #include "Furniture.h"
@@ -10,16 +9,26 @@
 #include "InteractObjectFactory.h"
 
 //Helper function for checking the user input for the do-while loop in run menu
-int checkUserInput(int userInput,int maxOption)
+int getUserInput(int maxOption)
 {
-    if(userInput > maxOption || userInput < 1)
+    std::string line;
+    int retVal;
+    while(std::getline(std::cin,line))
     {
-        std::cout << "Invalid choice, try again!" <<std::endl;
-        std::cin.clear();
-        //std::cin.ignore(INT_MAX);
-        return -1;
-    }
-    return userInput;
+        std::stringstream ss(line);
+        if (ss >> retVal)
+        {
+            if(ss.eof())
+            {
+                if(retVal <= maxOption && retVal >= 1)
+                {
+                    break;
+                }
+            }
+        }
+        std::cerr << "Invalid Input!" << std::endl;
+    }  
+    return retVal;
 }
 
 std::string runMenu(Player* player)
@@ -48,12 +57,7 @@ std::string runMenu(Player* player)
     }
 
     //read userInput, catch invalid answers
-    int checkedInput = -1;
-    do
-    {
-        std::cin >> userInput;
-        checkedInput = checkUserInput(userInput,((int)i));
-    }while(checkedInput < 0);
+    userInput = getUserInput(currentOptions->size());
 
     //Get the return value
     InteractObject* interactedObject = currentOptions->at(userInput-1);
