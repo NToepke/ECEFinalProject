@@ -182,7 +182,9 @@ void basicStory(Player* player, InteractObjectFactory factory)
         player->addInteraction(story);
     }
     //add one more interaction, which allows the game to track the end condition of the game.
-    player->mapInteraction(new Npc("Finish"));
+    Npc* finishLine = new Npc("Finish");
+    player->mapInteraction(finishLine);
+    delete finishLine;
 }
 
 int main()
