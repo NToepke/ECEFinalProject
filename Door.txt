@@ -1,0 +1,9 @@
+8
+It is a large metal door. You can make no sense of it, it seems like there is no handle on it
+NONE
+The door now has an opened slot in the middle. There is a wire popping out of it
+Tablet
+A Block is now extended from the door, you push the block back in and the door unlatches and you escape
+Finish
+END
+Furniture

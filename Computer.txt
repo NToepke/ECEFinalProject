@@ -1,0 +1,9 @@
+8
+There is a very bulky looking computer on a desk. It has a lot of weird wires that you do not recognize
+NONE
+You decide to flash your light on the computer. The wires on it look like they might fit into the tablet
+Tablet
+The Computer now has a menu asking if you want initiate the opening sequence. You click yes
+Door
+END
+Furniture

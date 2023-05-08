@@ -5,5 +5,5 @@ There is something carved into the desk, it looks like a key to translate the re
 Bookshelf
 Wait there is an actual key hidden in a secret compartment under the carved key! But where is the lock?
 Bookshelf
-NextRoom?
+NextRoom
 Furniture
