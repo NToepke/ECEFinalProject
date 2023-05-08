@@ -37,3 +37,12 @@ Npc::~Npc()
     this->descriptions.clear();
     this->increments.clear();
 }
+
+void Npc::setIncrement(int currentIncrement, std::string newIncrement)
+{
+    this->increments[currentIncrement] = newIncrement;
+}
+std::string Npc::giveIncrement(int currentIncrement)
+{
+    return this->increments[currentIncrement];
+}

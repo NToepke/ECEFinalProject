@@ -39,3 +39,12 @@ Furniture::~Furniture()
     this->descriptions.clear();
     this->increments.clear();
 }
+
+void Furniture::setIncrement(int currentIncrement, std::string newIncrement)
+{
+    this->increments[currentIncrement] = newIncrement;
+}
+std::string Furniture::giveIncrement(int currentIncrement)
+{
+    return this->increments[currentIncrement];
+}

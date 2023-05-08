@@ -62,20 +62,19 @@ std::string runMenu(Player* player)
     std::string printDesc = interactedObject->giveDescription(currentProgression);
     
     //Increment the map, which tells the player not to reuse this line.
-    std::string interactionToIncrement = interactedObject->increments[currentProgression];
+    std::string interactionToIncrement = interactedObject->giveIncrement(currentProgression);
     if (interactionToIncrement.compare("NONE") != 0) {
         int checkFail = player->incrementInteractionMap(interactionToIncrement);
+        //check if the increment failed.
         if(checkFail == -1)
         {
             std::cerr << "Increment failed, look above for error from method." << std::endl;
             //game is broken, exit out
             return "-1";
         }
-        interactedObject->increments[currentProgression] = "NONE";
+        interactedObject->setIncrement(currentProgression,"NONE");
     }
-    //check if the increment failed.
     
-
     //check if any interactions need to be removed from the list.
     player->validateInteractions();
 
@@ -131,11 +130,13 @@ void basicStory(Player* player, InteractObjectFactory factory)
             }
             //loop through the file, getting each line to build the InteractObject.
             while(std::getline(dataFile, tempDialogue)) {
+                //check for formatting characters at the end of the line. This allows any comparisons to work on the strings
                 if (tempDialogue.at(tempDialogue.size()-1) == '\n' || tempDialogue.at(tempDialogue.size()-1) == '\r') {
                     tempDialogue.resize(tempDialogue.size() - 1);
                 }
                 // 7 is the second to last line, indicating the next room
                 // 8 is the type of this object given the file.
+            //first line of each file is how long the file is.
             if(count == 0)
             {
                 fileLength = std::stoi(tempDialogue);
