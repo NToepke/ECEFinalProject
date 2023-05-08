@@ -71,3 +71,14 @@ int Player::incrementInteractionMap(std::string interactName)
     }
     return interactionMap.at(interactName);
 }
+
+Player::~Player()
+{
+    interactionMap.clear();
+    for( InteractObject* x : currentInteractions)
+    {
+        //std::cerr << x->name;
+        delete x;
+    }
+    currentInteractions.clear();
+}
